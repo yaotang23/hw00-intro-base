@@ -3,20 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project 0: Getting Started | CIS 566</title>
-    <style>
-      html, body {
-        margin: 0;
-        overflow: hidden;
-      }
-      #canvas {
-        width: 100%;
-        height: 100%;
-      }
-    </style>
+    <meta name="theme-color" content="#090e13" />
+    <link rel="icon" href="data:," />
+    <title>Living Marble · HW 00 · Yao Tang</title>
   </head>
   <body>
-    <canvas id="canvas"></canvas>
+    <canvas id="canvas" aria-label="An animated marble cube and a marble sphere. Drag to orbit and scroll to zoom."></canvas>
+    <header class="intro">
+      <p class="eyebrow">CIS 5660 / HW 00</p>
+      <h1>Living marble.</h1>
+      <p class="description">Solid noise, soft motion.<br />A study in procedural color and form.</p>
+    </header>
+    <footer><span>DRAG TO ORBIT &nbsp; / &nbsp; SCROLL TO ZOOM</span><span>YAO TANG · 2026</span></footer>
+    <p id="error" role="alert" hidden></p>
+    <div id="controls" aria-label="Scene controls"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

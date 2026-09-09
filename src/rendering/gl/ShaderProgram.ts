@@ -29,6 +29,9 @@ class ShaderProgram {
   unifModelInvTr: WebGLUniformLocation;
   unifViewProj: WebGLUniformLocation;
   unifColor: WebGLUniformLocation;
+  unifTime: WebGLUniformLocation;
+  unifDeformation: WebGLUniformLocation;
+  unifNoiseScale: WebGLUniformLocation;
 
   constructor(shaders: Array<Shader>) {
     this.prog = gl.createProgram();
@@ -48,6 +51,9 @@ class ShaderProgram {
     this.unifModelInvTr = gl.getUniformLocation(this.prog, "u_ModelInvTr");
     this.unifViewProj   = gl.getUniformLocation(this.prog, "u_ViewProj");
     this.unifColor      = gl.getUniformLocation(this.prog, "u_Color");
+    this.unifTime       = gl.getUniformLocation(this.prog, "u_Time");
+    this.unifDeformation = gl.getUniformLocation(this.prog, "u_Deformation");
+    this.unifNoiseScale = gl.getUniformLocation(this.prog, "u_NoiseScale");
   }
 
   use() {
@@ -59,11 +65,11 @@ class ShaderProgram {
 
   setModelMatrix(model: mat4) {
     this.use();
-    if (this.unifModel !== -1) {
+    if (this.unifModel !== null) {
       gl.uniformMatrix4fv(this.unifModel, false, model);
     }
 
-    if (this.unifModelInvTr !== -1) {
+    if (this.unifModelInvTr !== null) {
       let modelinvtr: mat4 = mat4.create();
       mat4.transpose(modelinvtr, model);
       mat4.invert(modelinvtr, modelinvtr);
@@ -73,16 +79,31 @@ class ShaderProgram {
 
   setViewProjMatrix(vp: mat4) {
     this.use();
-    if (this.unifViewProj !== -1) {
+    if (this.unifViewProj !== null) {
       gl.uniformMatrix4fv(this.unifViewProj, false, vp);
     }
   }
 
   setGeometryColor(color: vec4) {
     this.use();
-    if (this.unifColor !== -1) {
+    if (this.unifColor !== null) {
       gl.uniform4fv(this.unifColor, color);
     }
+  }
+
+  setTime(time: number) {
+    this.use();
+    if (this.unifTime !== null) gl.uniform1f(this.unifTime, time);
+  }
+
+  setDeformation(amount: number) {
+    this.use();
+    if (this.unifDeformation !== null) gl.uniform1f(this.unifDeformation, amount);
+  }
+
+  setNoiseScale(scale: number) {
+    this.use();
+    if (this.unifNoiseScale !== null) gl.uniform1f(this.unifNoiseScale, scale);
   }
 
   draw(d: Drawable) {
