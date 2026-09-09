@@ -2,6 +2,8 @@
 
 **Yao Tang · CIS 5660**
 
+**Live demo:** [yaotang23.github.io/hw00-intro-base](https://yaotang23.github.io/hw00-intro-base/)
+
 A WebGL 2 study of procedural materials and animated geometry. A subdivided cube twists and ripples next to an icosphere, with turquoise stone, pale mineral bands, and copper-colored veins generated entirely in GLSL.
 
 ![Living Marble: a deformed cube and an icosphere with 3D procedural marble](screenshots/living-marble.png)
@@ -31,12 +33,6 @@ npm run preview   # Serve the production build
 - **Scene controls:** noise scale, cube deformation, animation speed, pause, sphere subdivisions, and scene reload. The sphere stays undeformed as a material reference. Lambert mode displays both original shapes without deformation.
 
 Changing sphere subdivisions or reloading the scene releases the previous GPU buffers. The canvas follows window size and pixel density; the camera uses a field of view in radians.
-
-## Publication status
-
-This version is for **local review**. No changes have been pushed or deployed.
-
-The intended GitHub Pages address after publication is [yaotang23.github.io/hw00-intro-base](https://yaotang23.github.io/hw00-intro-base/); this is not a verified live demo yet. The existing workflow deploys pushes to `main` once Pages is configured to use GitHub Actions.
 
 ## References
 
